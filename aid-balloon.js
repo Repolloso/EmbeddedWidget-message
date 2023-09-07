@@ -53,6 +53,10 @@ function EmbeddedWidget({
                 </div>
             </div>
             <div class="aid-balloon_questions">
+                <div class="search-block">
+                    <input type="search" class="form-ctr" placeholder="Search..." class="search">
+                    <button id="search-btn"><img src="https://www.svgrepo.com/show/532555/search.svg" alt="magnifying-glass icon" onclick="searchBar()" width="25"></button>
+                </div>
                 <div class="div-block scroll">
                     <h6 class="h6-title">${titleQuestions}</h6>
                     <ul class="items">
@@ -134,7 +138,7 @@ function EmbeddedWidget({
             bottom: 15px;
             z-index: 1000;
             border: none;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
         }
             
         .aid-balloon img {
@@ -163,13 +167,13 @@ function EmbeddedWidget({
             align-items: center;
             justify-content: start;
             width: 350px;
-            height: 550px;
+            height: 615px;
             right: 15px;
             bottom: 90px;
             z-index: 1000;
             background-color: whitesmoke;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
         }
             
         .aid-balloon_header {
@@ -259,9 +263,66 @@ function EmbeddedWidget({
         .links:hover {
             text-decoration: underline;
         }
+
+        .form-ctr {
+            display: block;
+            border: 1px solid #ebedf2;
+            font-family: "ubuntu-regular", sans-serif;
+            font-size: 0.8125rem;
+            width: 100%;
+            height: 2.875rem;
+            padding: 10px 50px 10px 20px;
+            font-size: 0.8125rem;
+            font-weight: 400;
+            line-height: 1;
+            color: #495057;
+            background-color: #ffffff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 2px;
+            -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+        }
+
+        .form-ctr::-webkit-search-cancel-button{
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+        }
+
+        .search-block {
+            display: flex;
+            width: 100%;
+            position: relative;
+        }
+
+        #search-btn {
+            border: none;
+            background-color: transparent;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            /* bottom: 0px; */
+            height: 97%;
+            padding: 0px 10px;
+        }
+
+        #seach-btn:hover {
+            cursor: pointer;
+        }
+
     `;
 
     const styleElement = document.createElement('style');
     styleElement.textContent = widgetStyles;
     aidBalloon.appendChild(styleElement);
+}
+
+function searchBar() {
+    const searchInput = document.querySelector('.form-ctr');
+    const text = searchInput.value;
+    const url = `https://zylalabs-doc.freshdesk.com/support/search/solutions?term=${text}`;
+    window.open(url, '_blank');
 }
