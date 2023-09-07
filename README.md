@@ -7,6 +7,7 @@ Embedded Widget for user help
    ```
    <script src="https://res.cloudinary.com/duyd0717m/raw/upload/v1691778437/cdn/minify-aid-balloon_vxjlbj.js"></script>
    ```
+2. Cree un elemento HTML con el id="aid-balloon"
    
 3. Instancie el método EmbeddedWidget:
    const widget = EmbeddedWidget({});
